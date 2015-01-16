@@ -1,45 +1,49 @@
 angular.module('dashboard')
-.controller('DashboardController', function($scope, $interval, $sce, getSettings) {
+.controller('DashboardController', function($scope, $interval, getSettings) {
   $scope.type = null;
   $scope.url = null;
 
-  var createSeedArg = function() {
+  var appendUrlSeed = function appendUrlSeed(url) {
     var time = new Date().getTime().toString();
-    return 'seed' + time + '=' + time;
+    var seed = 'seed' + time + '=' + time;
+    var sym = url.indexOf('?') >= 0 ? '&' : '?';
+    return url + sym + seed;
   };
 
-  getSettings().then(function(settings) {
-    var sources = settings.sources;
+  var initilize = function initilize(settings) {
+    var sourceList = settings.sources;
 
-    if (!sources || !sources.length) return;
+    if (!sourceList || !sourceList.length) return;
 
     var delay = settings.duration || 10000;
-    var index = 0;
-    var refreshInterval;
+    var sourceIndex = 0;
+    var sourceIntervalId = null;
+    var refreshIntervalId = null;
 
-    var onInterval = function() {
-      $interval.cancel(refreshInterval);
+    var nextSource = function() {
+      $interval.cancel(refreshIntervalId);
 
-      if (index >= sources.length) index = 0;
-      var source = sources[index++];
+      if (sourceIndex >= sourceList.length) sourceIndex = 0;
+      var source = sourceList[sourceIndex++];
 
       $scope.type = source.type || 'page';
       $scope.url = source.url;
 
       if (source.refresh) {
-        refreshInterval = $interval(function() {
-          $scope.url += source.url.indexOf('?') ? '&' : '?';
-          $scope.url += createSeedArg();
+        refreshIntervalId = $interval(function() {
+          $scope.url = appendUrlSeed(source.url);
         }, source.refresh);
       }
     };
 
-    onInterval();
-    var sourceInterval = $interval(onInterval, delay);
+    nextSource();
+    sourceIntervalId = $interval(nextSource, delay);
 
     $scope.$on('$destroy', function() {
-      $interval.cancel(sourceInterval);
-      $interval.cancel(refreshInterval);
+      $interval.cancel(sourceIntervalId);
+      $interval.cancel(refreshIntervalId);
     });
-  });
+  };
+
+  getSettings().then(initialize);
 });

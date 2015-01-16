@@ -6,10 +6,6 @@
       "refresh": 1000
     },
     {
-      "url": "http://www.programmers.com.br/",
-      "type": "page"
-    },
-    {
       "url": "http://camerasspo.programmers.com.br/image/salasp/",
       "type": "image",
       "refresh": 1000

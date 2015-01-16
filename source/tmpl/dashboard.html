@@ -1,2 +1,2 @@
-<iframe ng-if="type !== 'image'" src="{{url}}"></iframe>
-<img ng-if="type === 'image'" src="{{url}}" />
+<iframe ng-if="url && type !== 'image'" ng-src="{{url}}"></iframe>
+<img ng-if="url && type === 'image'" ng-src="{{url}}" />
