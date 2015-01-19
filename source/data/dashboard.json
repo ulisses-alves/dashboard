@@ -1,7 +1,37 @@
 {
   "sources": [
     {
-      "url": "http://camerasmto.programmers.com.br/image/cam03/",
+      "url": "http://camerasmto.programmers.com.br/image/cam06/",
+      "type": "image",
+      "refresh": 1000
+    },
+    {
+      "url": "http://camerasmto.programmers.com.br/image/cam11/",
+      "type": "image",
+      "refresh": 1000
+    },
+    {
+      "url": "http://camerasmto.programmers.com.br/image/cam05/",
+      "type": "image",
+      "refresh": 1000
+    },
+    {
+      "url": "http://camerasmto.programmers.com.br/image/cam16/",
+      "type": "image",
+      "refresh": 1000
+    },
+    {
+      "url": "http://camerasmto.programmers.com.br/image/cam04/",
+      "type": "image",
+      "refresh": 1000
+    },
+    {
+      "url": "http://camerasmto.programmers.com.br/image/cam10/",
+      "type": "image",
+      "refresh": 1000
+    },
+    {
+      "url": "http://camerasmto.programmers.com.br/image/cam17/",
       "type": "image",
       "refresh": 1000
     },
@@ -11,5 +41,5 @@
       "refresh": 1000
     }
   ],
-  "duration": 10000
+  "duration": 5000
 }
