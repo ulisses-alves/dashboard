@@ -1,5 +1,5 @@
 angular.module 'dashboard'
-.controller 'DashboardController', ($scope, $interval, getSettings) ->
+.controller 'DashboardController', ($scope, $timeout, getSettings) ->
   $scope.type = null;
   $scope.url = null;
 
@@ -8,38 +8,35 @@ angular.module 'dashboard'
     sym = if url.indexOf '?' < 0 then '?' else '&'
     "#{url}#{sym}seed#{time}=#{time}"
 
-  initialize = (settings) ->
-    sourceList = settings.sources
-    return unless sourceList and sourceList.length
+  begin = ->
+    getSettings(cache: false).then (settings) ->
+      duration = settings.duration ? 10000
+      sourceList = settings.sources ? []
+      sourceIndex = 0
+      refreshId = null;
 
-    delay = settings.duration ? 10000
-    sourceIndex = 0
-    sourceIntervalId = null
-    refreshIntervalId = null
+      next = ->
+        $timeout.cancel(refreshId)
+        source = sourceList[sourceIndex++]
 
-    nextSource = ->
-      $interval.cancel refreshIntervalId
-      sourceIndex = 0 unless sourceIndex < sourceList.length
-      source = sourceList[sourceIndex++]
+        unless source?
+          $timeout(begin, duration)
+          return
 
-      $scope.type = source.type ? 'page'
-      $scope.url = source.url
+        refresh = source.refresh ? false
 
-      refreshIntervalId = $interval(
-        -> $scope.url = appendUrlSeed source.url
-        source.refresh
-      ) if source.refresh
+        update = ->
+          $scope.type = source.type ? 'page'
+          $scope.url = appendUrlSeed(source.url)
+          refreshId = $timeout(update, refresh) if refresh
 
+        update()
+        $timeout(next, duration)
+        return
+
+      next();
       return
-
-    nextSource()
-    sourceIntervalId = $interval nextSource, delay
-
-    $scope.$on '$destroy', ->
-      $interval.cancel sourceIntervalId
-      $interval.cancel sourceRefreshId
-
     return
 
-  getSettings().then initialize
+  begin();
   return

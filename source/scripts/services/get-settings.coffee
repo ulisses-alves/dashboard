@@ -1,12 +1,16 @@
 angular.module 'dashboard'
 .provider 'getSettings', ->
-  @path = (@settingsPath) ->
+  settingsPath = null
+
+  @path = (path) ->
+    settingsPath = path
+    @
 
   @$get = ($http) ->
-    promise = $http.get @settingsPath
     class getSettings
-      constructor: ->
-        return promise.then (res) ->
+      constructor: (options) ->
+        config = angular.extend { cache: true }, options
+        return $http.get(settingsPath, config).then (res) ->
           angular.extend {}, res.data
 
   return
