@@ -1,7 +1,8 @@
 angular.module 'dashboard'
 .controller 'DashboardController', ($scope, $timeout, getSettings) ->
-  $scope.type = null;
-  $scope.url = null;
+  $scope.type = null
+  $scope.url = null
+  $scope.title = null
 
   appendUrlSeed = (url) ->
     time = new Date().getTime().toString()
@@ -13,30 +14,22 @@ angular.module 'dashboard'
       duration = settings.duration ? 10000
       sourceList = settings.sources ? []
       sourceIndex = 0
-      refreshId = null;
 
       next = ->
-        $timeout.cancel(refreshId)
         source = sourceList[sourceIndex++]
 
         unless source?
-          $timeout(begin, duration)
+          $timeout begin, duration
           return
 
-        refresh = source.refresh ? false
+        $scope.type = source.type ? 'page'
+        $scope.url = source.url
+        $scope.title = source.title
 
-        update = ->
-          $scope.type = source.type ? 'page'
-          $scope.url = appendUrlSeed(source.url)
-          refreshId = $timeout(update, refresh) if refresh
-
-        update()
-        $timeout(next, duration)
+        $timeout next, duration
         return
 
       next();
-      return
-    return
 
   begin();
   return
