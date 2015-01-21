@@ -7,55 +7,55 @@
       "refresh": 1000
     },
     {
-	  "title": "Matão: Tetris-2",
+      "title": "Matão: Tetris-2",
       "url": "http://camerasmto.programmers.com.br/image/cam11/",
       "type": "image",
       "refresh": 1000
     },
     {
-	  "title": "Matão: Tetris-1",
+      "title": "Matão: Tetris-1",
       "url": "http://camerasmto.programmers.com.br/image/cam05/",
       "type": "image",
       "refresh": 1000
     },
     {
-	  "title": "Matão: Paranoid-2",
+      "title": "Matão: Paranoid-2",
       "url": "http://camerasmto.programmers.com.br/image/cam16/",
       "type": "image",
       "refresh": 1000
     },
     {
-	  "title": "Matão: Paranoid-1",
+      "title": "Matão: Paranoid-1",
       "url": "http://camerasmto.programmers.com.br/image/cam04/",
       "type": "image",
       "refresh": 1000
     },
     {
-	  "title": "Matão: Pac-Man-2",
+      "title": "Matão: Pac-Man-2",
       "url": "http://camerasmto.programmers.com.br/image/cam10/",
       "type": "image",
       "refresh": 1000
     },
     {
-	  "title": "Matão: Corredor-2",
+      "title": "Matão: Space Invaders",
       "url": "http://camerasmto.programmers.com.br/image/cam17/",
       "type": "image",
       "refresh": 1000
     },
-	{
-	  "title": "Matão: Atari",
+  	{
+  	  "title": "Matão: Atari",
       "url": "http://camerasmto.programmers.com.br/image/cam15/",
       "type": "image",
       "refresh": 1000
     },
-	{
-	  "title": "Matão: RH",
-      "url": "http://camerascps.programmers.com.br/jpegpush.htm",
+  	{
+      "title": "Matão: RH",
+      "url": "http://camerascps.programmers.com.br/image/cam01/",
       "type": "image",
       "refresh": 1000
     },
     {
-	  "title": "São Paulo: Sala",
+	    "title": "São Paulo: Sala",
       "url": "http://camerasspo.programmers.com.br/image/salasp/",
       "type": "image",
       "refresh": 1000

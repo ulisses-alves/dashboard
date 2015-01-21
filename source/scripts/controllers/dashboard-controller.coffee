@@ -18,9 +18,7 @@ angular.module 'dashboard'
       next = ->
         source = sourceList[sourceIndex++]
 
-        unless source?
-          $timeout begin, duration
-          return
+        return begin() unless source?
 
         $scope.type = source.type ? 'page'
         $scope.url = source.url
