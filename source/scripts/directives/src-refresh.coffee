@@ -4,7 +4,8 @@ angular.module 'dashboard'
     lastRefresh = new Date()
 
     refresh = ->
-      attrs.$set 'src', urlHelper.appendSeed(attrs.dbSrcRefresh)
+      src = urlHelper.appendSeed attrs.dbSrcRefresh
+      attrs.$set 'src', src
       lastRefresh = new Date()
       return
 

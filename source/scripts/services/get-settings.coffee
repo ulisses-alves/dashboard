@@ -4,7 +4,7 @@ angular.module 'dashboard'
 
   @path = (path) ->
     settingsPath = path
-    @
+    this
 
   @$get = ($http) ->
     class getSettings

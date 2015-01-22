@@ -25,12 +25,6 @@
       "refresh": 1000
     },
     {
-      "title": "Matão: Paranoid-1",
-      "url": "http://camerasmto.programmers.com.br/image/cam04/",
-      "type": "image",
-      "refresh": 1000
-    },
-    {
       "title": "Matão: Pac-Man-2",
       "url": "http://camerasmto.programmers.com.br/image/cam10/",
       "type": "image",
@@ -42,20 +36,20 @@
       "type": "image",
       "refresh": 1000
     },
-  	{
-  	  "title": "Matão: Atari",
+    {
+      "title": "Matão: Atari",
       "url": "http://camerasmto.programmers.com.br/image/cam15/",
       "type": "image",
       "refresh": 1000
     },
-  	{
-      "title": "Matão: RH",
+    {
+      "title": "Campinas: RH",
       "url": "http://camerascps.programmers.com.br/image/cam01/",
       "type": "image",
       "refresh": 1000
     },
     {
-	    "title": "São Paulo: Sala",
+      "title": "São Paulo: Sala",
       "url": "http://camerasspo.programmers.com.br/image/salasp/",
       "type": "image",
       "refresh": 1000

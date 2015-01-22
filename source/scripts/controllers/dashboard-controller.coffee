@@ -4,11 +4,6 @@ angular.module 'dashboard'
   $scope.url = null
   $scope.title = null
 
-  appendUrlSeed = (url) ->
-    time = new Date().getTime().toString()
-    sym = if url.indexOf '?' < 0 then '?' else '&'
-    "#{url}#{sym}seed#{time}=#{time}"
-
   begin = ->
     getSettings(cache: false).then (settings) ->
       duration = settings.duration ? 10000

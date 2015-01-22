@@ -1,4 +1,5 @@
-$primary: rgb(58, 58, 200)
+$font-stack: helvetica, arial, sans-serif
+$primary: rgb(0, 71, 140)
 
 body
   padding: 0
@@ -6,24 +7,39 @@ body
   position: fixed
   height: 100%
   width: 100%
+  font:
+    family: $font-stack
+    size: 16px
 
 figure
   margin: 0
   height: 100%
   width: 100%
 
-  iframe, img
+  > iframe, > img
     border: none
     display: block
     height: 100%
     width: 100%
 
   figcaption
-    background-color: $primary
-    border: 1px solid darken($primary, 20%)
-    color: white
-    font-family: helvetica, arial, sans-serif
-    position: fixed
+    background-color: rgba($primary, 0.8)
+    display: -webkit-flex
+    display: flex
+    -webkit-align-items: center
+    align-items: center
+    position: absolute
     left: 16px
     bottom: 16px
-    padding: 8px 12px
+    opacity: 0.9
+
+    img
+      background-color: white
+      height: 100%
+      width: 160px
+      padding: 8px 12px
+
+    span
+      color: white
+      width: 184px
+      text-align: center
