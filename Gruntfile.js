@@ -76,6 +76,15 @@ module.exports = function(grunt) {
         src: ['**/*.bundle.js']
       }
     },
+    autoprefixer: {
+      build: {
+        options: {
+          map: true
+        },
+        expand: true,
+        src: 'build/styles/**/*.css'
+      }
+    },
     csswring: {
       build: {
         options: {
@@ -118,6 +127,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-csswring');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -128,6 +138,7 @@ module.exports = function(grunt) {
     'sass',
     'concat',
     'uglify',
+    'autoprefixer',
     'csswring'
   ]);
 
