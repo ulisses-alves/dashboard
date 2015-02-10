@@ -1,6 +1,8 @@
 angular.module 'dashboard'
 .directive 'dbSrcRefresh', ($timeout, urlHelper) ->
   link: (scope, element, attrs) ->
+    return unless attrs.dbSrcRefresh
+
     lastRefresh = new Date()
 
     refresh = ->
