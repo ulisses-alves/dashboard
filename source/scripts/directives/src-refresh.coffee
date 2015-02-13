@@ -3,7 +3,7 @@ angular.module 'dashboard'
   link: (scope, element, attrs) ->
     return unless attrs.dbSrcRefresh
 
-    lastRefresh = new Date()
+    lastRefresh = null
 
     refresh = ->
       src = urlHelper.appendSeed attrs.dbSrcRefresh

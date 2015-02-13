@@ -17,6 +17,12 @@ module.exports = function(grunt) {
             cwd: 'vendor/',
             dest: 'build/vendor/',
             src: ['**']
+          },
+          {
+            expand: true,
+            cwd: 'tests/',
+            dest: 'build/tests/',
+            src: ['**']
           }
         ]
       }
@@ -26,11 +32,22 @@ module.exports = function(grunt) {
         options: {
           sourceMap: true
         },
-        expand: true,
-        cwd: 'build/scripts/',
-        dest: 'build/scripts/',
-        src: ['**/*.coffee'],
-        ext: '.js'
+        files: [
+          {
+            expand: true,
+            cwd: 'build/scripts/',
+            dest: 'build/scripts/',
+            src: ['**/*.coffee'],
+            ext: '.js'
+          },
+          {
+            expand: true,
+            cwd: 'build/tests/',
+            dest: 'build/tests/',
+            src: ['**/*.coffee'],
+            ext: '.js'
+          }
+        ]
       }
     },
     sass: {
@@ -110,13 +127,39 @@ module.exports = function(grunt) {
         }
       }
     },
+    karma: {
+      unit: {
+        options: {
+          frameworks: ['jasmine'],
+          browsers: ['PhantomJS'],
+          singleRun: true,
+          files: [
+            'build/vendor/angular/angular.js',
+            'build/vendor/angular/angular-route.js',
+            'build/vendor/angular/angular-mocks.js',
+            'build/scripts/dashboard.bundle.min.js',
+            'build/tests/unit/**/*.js'
+          ]
+        }
+      }
+    },
     watch: {
       dev: {
         options: {
           spawn: false
         },
-        files: ['source/**/*'],
+        files: ['source/**'],
         tasks: ['build']
+      },
+      test: {
+        options: {
+          spawn: false
+        },
+        files: [
+          'source/**',
+          'tests/**'
+        ],
+        tasks: ['test']
       }
     }
   });
@@ -131,6 +174,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-csswring');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-karma');
 
   grunt.registerTask('build', [
     'copy',
@@ -142,11 +186,22 @@ module.exports = function(grunt) {
     'csswring'
   ]);
 
+  grunt.registerTask('test', [
+    'clean',
+    'build',
+    'karma:unit',
+  ]);
+
   grunt.registerTask('dev', [
     'clean',
     'build',
     'connect',
-    'watch'
+    'watch:dev'
+  ]);
+
+  grunt.registerTask('devtest', [
+    'test',
+    'watch:test'
   ]);
 
   grunt.registerTask('default', [
