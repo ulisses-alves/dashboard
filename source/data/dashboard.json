@@ -43,8 +43,20 @@
       "refresh": 1000
     },
     {
-      "title": "São Paulo: Sala",
+      "title": "Campinas: Técnicos",
+      "url": "http://camerascps.programmers.com.br/image/cam02/",
+      "type": "image",
+      "refresh": 1000
+    },
+    {
+      "title": "São Paulo: Sala_SP",
       "url": "http://camerasspo.programmers.com.br/image/salasp/",
+      "type": "image",
+      "refresh": 1000
+    },
+    {
+      "title": "São Paulo: Geral_SP",
+      "url": "http://camerasspo.programmers.com.br/image/cam01/",
       "type": "image",
       "refresh": 1000
     }
