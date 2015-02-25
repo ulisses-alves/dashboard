@@ -3,61 +3,51 @@
     {
       "title": "Matão: Varanda",
       "url": "http://camerasmto.programmers.com.br/image/cam06/",
-      "type": "image",
       "refresh": 1000
     },
     {
       "title": "Matão: Tetris-2",
       "url": "http://camerasmto.programmers.com.br/image/cam11/",
-      "type": "image",
       "refresh": 1000
     },
     {
       "title": "Matão: Tetris-1",
       "url": "http://camerasmto.programmers.com.br/image/cam05/",
-      "type": "image",
       "refresh": 1000
     },
     {
       "title": "Matão: Paranoid-2",
       "url": "http://camerasmto.programmers.com.br/image/cam16/",
-      "type": "image",
       "refresh": 1000
     },
     {
       "title": "Matão: Pac-Man-2",
       "url": "http://camerasmto.programmers.com.br/image/cam10/",
-      "type": "image",
       "refresh": 1000
     },
     {
       "title": "Matão: Space Invaders",
       "url": "http://camerasmto.programmers.com.br/image/cam17/",
-      "type": "image",
       "refresh": 1000
     },
     {
       "title": "Campinas: RH",
       "url": "http://camerascps.programmers.com.br/image/cam01/",
-      "type": "image",
       "refresh": 1000
     },
     {
       "title": "Campinas: Técnicos",
       "url": "http://camerascps.programmers.com.br/image/cam02/",
-      "type": "image",
       "refresh": 1000
     },
     {
       "title": "São Paulo: Sala_SP",
       "url": "http://camerasspo.programmers.com.br/image/salasp/",
-      "type": "image",
       "refresh": 1000
     },
     {
       "title": "São Paulo: Geral_SP",
       "url": "http://camerasspo.programmers.com.br/image/cam01/",
-      "type": "image",
       "refresh": 1000
     }
   ],

@@ -1,5 +1,6 @@
 $font-stack: helvetica, arial, sans-serif
 $primary: rgb(0, 71, 140)
+$next-camera-size: 30%
 
 body
   padding: 0
@@ -7,37 +8,45 @@ body
   position: fixed
   height: 100%
   width: 100%
+  background-color: lighten(black, 20%)
   font:
     family: $font-stack
     size: 16px
 
-figure
-  margin: 0
+.camera
+  display: block
+  position: absolute
+  bottom: 0
+  right: 0
   height: 100%
   width: 100%
 
-  > iframe, > img
-    border: none
-    display: block
+  &.previous
+    z-index: 0
+
+  &.current
+    z-index: 1
+    animation: camera-zoom 1s
+
+  &.next
+    border: 1px solid lighten(black, 30%)
+    height: $next-camera-size
+    width: $next-camera-size
+    z-index: 2
+    animation: camera-slide-left 1s
+
+@keyframes camera-slide-left
+  from
+    right: -$next-camera-size
+    bottom: -$next-camera-size
+  to
+    right: 0
+    bottom: 0
+
+@keyframes camera-zoom
+  from
+    height: $next-camera-size
+    width: $next-camera-size
+  to
     height: 100%
     width: 100%
-
-  figcaption
-    background-color: rgba($primary, 0.8)
-    display: flex
-    align-items: center
-    position: absolute
-    left: 16px
-    bottom: 16px
-    opacity: 0.9
-
-    img
-      background-color: white
-      height: 100%
-      width: 160px
-      padding: 8px 12px
-
-    span
-      color: white
-      width: 184px
-      text-align: center

@@ -1,4 +1,4 @@
-<figure>
+<!-- <figure>
   <iframe ng-if="url && type === 'site'" ng-src="{{url}}"></iframe>
   <img ng-if="url && type === 'image'" db-src-refresh="{{url}}" db-src-refresh-min="1000" />
   <figcaption ng-show="title">
@@ -6,3 +6,14 @@
     <span>{{title}}</span>
   </figcaption>
 </figure>
+<figure>
+  <iframe ng-if="url && type === 'site'" ng-src="{{url}}"></iframe>
+  <img ng-if="url && type === 'image'" db-src-refresh="{{url}}" db-src-refresh-min="1000" />
+  <figcaption ng-show="title">
+    <img src="images/programmers.png" alt="Programmers" />
+    <span>{{title}}</span>
+  </figcaption>
+</figure> -->
+<img class="camera {{first.position}}" ng-if="first.source" db-src-refresh="{{first.source.url}}" alt="{{first.source.title}}" />
+<img class="camera {{second.position}}" ng-if="second.source" db-src-refresh="{{second.source.url}}" alt="{{second.source.title}}" />
+<img class="camera {{third.position}}" ng-if="third.source" db-src-refresh="{{third.source.url}}" alt="{{third.source.title}}" />

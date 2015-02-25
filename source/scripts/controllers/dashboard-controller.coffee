@@ -1,28 +1,35 @@
 angular.module 'dashboard'
-.controller 'DashboardController', ($scope, $timeout, getSettings) ->
-  $scope.type = null
-  $scope.url = null
-  $scope.title = null
+.controller 'DashboardController', ($scope, $q, $interval, getSettings) ->
+  $scope.first = first = position: 'previous'
+  $scope.second = second = position: 'current'
+  $scope.third = third = position: 'next'
 
   begin = ->
-    getSettings(cache: false).then (settings) ->
-      duration = settings.duration ? 10000
-      sourceList = settings.sources ? []
-      sourceIndex = 0
+    duration = 10000
+    sources = []
+    index = 0
 
-      next = ->
-        source = sourceList[sourceIndex++]
+    getNext = ->
+      src = sources[index++]
+      return $q.when src if src?
 
-        return begin() unless source?
+      getSettings(cache: false).then (settings) ->
+        duration = settings.duration ? duration
+        sources = settings.sources ? []
+        index = 0
+        getNext()
 
-        $scope.type = source.type ? 'page'
-        $scope.url = source.url
-        $scope.title = source.title
+    refresh = ->
+      getNext().then (source) ->
+        [first.position, second.position, third.position] =
+          [third.position, first.position, second.position]
 
-        $timeout next, duration
-        return
+        [first, second, third]
+          .filter (x) -> x.position is 'next'
+          .forEach (x) -> x.source = source
 
-      next();
+    refresh()
+    $interval refresh, duration
 
-  begin();
+  begin()
   return
